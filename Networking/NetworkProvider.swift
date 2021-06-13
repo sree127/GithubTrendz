@@ -46,6 +46,7 @@ final public class NetworkProvider: NetworkInterface {
     return urlSession.rx.data(request: request)
       .map { try JSONDecoder().decode(SearchReposResponse.self, from: $0) }
       .take(1)
+      .debug("😲😲😲😲")
       .asSingle()
   }
   

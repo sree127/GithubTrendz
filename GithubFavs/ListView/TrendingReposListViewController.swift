@@ -15,7 +15,7 @@ final class TrendingReposListViewController: UIViewController {
   init(dependencies: TrendingReposListViewModel.Dependencies) {
     self.viewModel = TrendingReposListViewModel(dependencies: dependencies)
     
-    super.init()
+    super.init(nibName: nil, bundle: nil)
   }
   
   required init?(coder: NSCoder) {
@@ -24,12 +24,13 @@ final class TrendingReposListViewController: UIViewController {
   
   // MARK: - UI Components
   private let tableView: UITableView = {
-    let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    let tableView = UITableView()
     tableView.estimatedRowHeight = Layout.cellEstimatedRowHeight
     tableView.separatorStyle = .singleLine
     tableView.showsVerticalScrollIndicator = true
     tableView.backgroundColor = Style.Color.Background.back
     tableView.rowHeight = UITableView.automaticDimension
+    tableView.translatesAutoresizingMaskIntoConstraints = false
     return tableView
   }()
   
@@ -47,7 +48,6 @@ final class TrendingReposListViewController: UIViewController {
   }
 }
 
-// MARK: - Layout
 // MARK: - Layout
 private extension TrendingReposListViewController {
   
@@ -85,12 +85,16 @@ private extension TrendingReposListViewController {
 // MARK: - DataSource
 extension TrendingReposListViewController: UITableViewDelegate, UITableViewDataSource {
   
+  func numberOfSections(in tableView: UITableView) -> Int {
+    1
+  }
+  
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return dataSourceRelay.value.items.count
+    dataSourceRelay.value.items.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let cell = tableView.dequeueReusableCell(withIdentifier: "GroupInfoCell", for: indexPath) as? GithubRepoInfoCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: "GithubRepoInfoCell", for: indexPath) as? GithubRepoInfoCell else {
       fatalError("Cannot dequeue cell")
     }
     if let cellViewModel = dataSourceRelay.value.items[indexPath.row] as? RepoInfoCellModel {

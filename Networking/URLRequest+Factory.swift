@@ -22,13 +22,8 @@ extension Factory.Request: FactoryMethod {
   static func makeFrom(_ type: OutputType) -> URLRequest? {
     switch type {
     case let .getTrendingRepos(host):
-      var components = URLComponents(string: host)
-      components?.queryItems = [
-        URLQueryItem(name: "language", value: "swift"),
-        URLQueryItem(name: "sort", value: "stars"),
-      ]
-      guard let url = components?.url else { return nil }
-      var urlRequest = URLRequest(url: url.appending(["receipts/q="]))
+      guard let url = URL(string: "\(host)repositories?q=language:swift&sort:stars") else { return nil }
+      var urlRequest = URLRequest(url: url)
       urlRequest.httpMethod = "GET"
       return urlRequest
     }

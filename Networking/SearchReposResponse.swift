@@ -20,9 +20,9 @@ struct ItemsResponse: Codable {
   let welcomePrivate: Bool
   let owner: Owner
   let htmlURL: String
-  let welcomeDescription: String
+  let welcomeDescription: String?
   let fork: Bool
-  let url, forksURL: String
+  let url, forksURL: String?
   let keysURL, collaboratorsURL: String
   let teamsURL, hooksURL: String
   let issueEventsURL: String
@@ -41,20 +41,20 @@ struct ItemsResponse: Codable {
   let issuesURL, pullsURL, milestonesURL, notificationsURL: String
   let labelsURL, releasesURL: String
   let deploymentsURL: String
-  let createdAt, updatedAt, pushedAt: Date
+  let createdAt, updatedAt, pushedAt: String
   let gitURL, sshURL: String
-  let cloneURL: String
-  let svnURL: String
-  let homepage: String
+  let cloneURL: String?
+  let svnURL: String?
+  let homepage: String?
   let size, stargazersCount, watchersCount: Int
-  let language: JSONNull?
+  let language: String?
   let hasIssues, hasProjects, hasDownloads, hasWiki: Bool
   let hasPages: Bool
   let forksCount: Int
-  let mirrorURL: JSONNull?
+  let mirrorURL: String?
   let archived, disabled: Bool
   let openIssuesCount: Int
-  let license: JSONNull?
+  let license: License?
   let forks, openIssues, watchers: Int
   let defaultBranch: String
   let score: Int
@@ -130,6 +130,34 @@ struct ItemsResponse: Codable {
     case watchers
     case defaultBranch = "default_branch"
     case score
+  }
+}
+
+// MARK: - License
+struct License: Codable {
+  let key, name, spdxID: String?
+  let url: String?
+  let nodeID: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case key, name
+    case spdxID = "spdx_id"
+    case url
+    case nodeID = "node_id"
+  }
+  
+  init(from decoder: Decoder) throws {
+    let values = try decoder.container(keyedBy: CodingKeys.self)
+    key = try values.decodeIfPresent(String.self, forKey: .key)
+    name = try values.decodeIfPresent(String.self, forKey: .name)
+    spdxID = try values.decodeIfPresent(String.self, forKey: .spdxID)
+    nodeID = try values.decodeIfPresent(String.self, forKey: .url)
+    url = try values.decodeIfPresent(String.self, forKey: .nodeID)
+
+//    let container = try decoder.singleValueContainer()
+//    if !container.decodeNil() {
+//      throw DecodingError.typeMismatch(License.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for JSONNull"))
+//    }
   }
 }
 

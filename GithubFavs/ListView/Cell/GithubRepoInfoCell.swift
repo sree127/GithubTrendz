@@ -58,13 +58,17 @@ private extension GithubRepoInfoCell {
   }
   
   func layoutMainStack() {
-    [authorImageView, descriptionStack].forEach { mainStack.addArrangedSubview($0) }
+    mainStack.addArrangedSubview(authorImageView, constraints: [
+      authorImageView.widthAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.3),
+      authorImageView.heightAnchor.constraint(equalTo: authorImageView.widthAnchor)
+    ])
+    mainStack.addArrangedSubview(descriptionStack)
   
     contentView.addSubview(mainStack)
     NSLayoutConstraint.activate([
       mainStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: Layout.contentPadding),
       mainStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: Layout.contentPadding),
-      mainStack.trailingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: -Layout.contentPadding),
+      mainStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -Layout.contentPadding),
       mainStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -Layout.contentPadding)
     ])
   }

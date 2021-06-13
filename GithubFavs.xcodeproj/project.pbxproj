@@ -7,15 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D15F711351AF04C40BCDB161 /* libPods-GithubFavs.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E246E1422EE45C2A3F1054D /* libPods-GithubFavs.a */; };
+		F745F92226769A82003B828B /* GenericSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92126769A82003B828B /* GenericSectionModel.swift */; };
+		F745F92426769B11003B828B /* GithubRepoInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92326769B11003B828B /* GithubRepoInfoCell.swift */; };
+		F745F92626769F45003B828B /* RepoInfoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92526769F45003B828B /* RepoInfoCellModel.swift */; };
 		F77EBEF8267682B2005211D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEF7267682B2005211D4 /* AppDelegate.swift */; };
 		F77EBEFA267682B2005211D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEF9267682B2005211D4 /* SceneDelegate.swift */; };
 		F77EBEFC267682B2005211D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEFB267682B2005211D4 /* ViewController.swift */; };
 		F77EBEFF267682B2005211D4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F77EBEFD267682B2005211D4 /* Main.storyboard */; };
 		F77EBF01267682B3005211D4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F77EBF00267682B3005211D4 /* Assets.xcassets */; };
 		F77EBF04267682B3005211D4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F77EBF02267682B3005211D4 /* LaunchScreen.storyboard */; };
+		F77EBF0E2676831F005211D4 /* TrendingReposListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF0D2676831F005211D4 /* TrendingReposListViewController.swift */; };
+		F77EBF102676832C005211D4 /* TrendingReposListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF0F2676832C005211D4 /* TrendingReposListViewModel.swift */; };
+		F77EBF242676845E005211D4 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF122676845E005211D4 /* AppConfiguration.swift */; };
+		F77EBF262676845E005211D4 /* URLRequest+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF152676845E005211D4 /* URLRequest+Factory.swift */; };
+		F77EBF282676845E005211D4 /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF172676845E005211D4 /* NetworkProvider.swift */; };
+		F77EBF292676845E005211D4 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF1A2676845E005211D4 /* Style.swift */; };
+		F77EBF2A2676845E005211D4 /* ActivityIndicatorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF1C2676845E005211D4 /* ActivityIndicatorButton.swift */; };
+		F77EBF2B2676845E005211D4 /* UIStackView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF1D2676845E005211D4 /* UIStackView+Extensions.swift */; };
+		F77EBF2C2676845E005211D4 /* Fromatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF1E2676845E005211D4 /* Fromatters.swift */; };
+		F77EBF2D2676845E005211D4 /* Factory+Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF202676845E005211D4 /* Factory+Button.swift */; };
+		F77EBF2E2676845E005211D4 /* Factory+Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF212676845E005211D4 /* Factory+Stack.swift */; };
+		F77EBF2F2676845E005211D4 /* Factory+Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF222676845E005211D4 /* Factory+Label.swift */; };
+		F77EBF302676845E005211D4 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF232676845E005211D4 /* Factory.swift */; };
+		F77EBF32267687A2005211D4 /* SearchReposResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBF31267687A2005211D4 /* SearchReposResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E246E1422EE45C2A3F1054D /* libPods-GithubFavs.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GithubFavs.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		86F79E15E5B5BDDC744C525E /* Pods-GithubFavs.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubFavs.release.xcconfig"; path = "Target Support Files/Pods-GithubFavs/Pods-GithubFavs.release.xcconfig"; sourceTree = "<group>"; };
+		CE83FB250D152A12A007E15D /* Pods-GithubFavs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubFavs.debug.xcconfig"; path = "Target Support Files/Pods-GithubFavs/Pods-GithubFavs.debug.xcconfig"; sourceTree = "<group>"; };
+		F745F92126769A82003B828B /* GenericSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSectionModel.swift; sourceTree = "<group>"; };
+		F745F92326769B11003B828B /* GithubRepoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoInfoCell.swift; sourceTree = "<group>"; };
+		F745F92526769F45003B828B /* RepoInfoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoInfoCellModel.swift; sourceTree = "<group>"; };
 		F77EBEF4267682B2005211D4 /* GithubFavs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFavs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77EBEF7267682B2005211D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F77EBEF9267682B2005211D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +48,20 @@
 		F77EBF00267682B3005211D4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F77EBF03267682B3005211D4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F77EBF05267682B3005211D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F77EBF0D2676831F005211D4 /* TrendingReposListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposListViewController.swift; sourceTree = "<group>"; };
+		F77EBF0F2676832C005211D4 /* TrendingReposListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingReposListViewModel.swift; sourceTree = "<group>"; };
+		F77EBF122676845E005211D4 /* AppConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		F77EBF152676845E005211D4 /* URLRequest+Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLRequest+Factory.swift"; sourceTree = "<group>"; };
+		F77EBF172676845E005211D4 /* NetworkProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
+		F77EBF1A2676845E005211D4 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		F77EBF1C2676845E005211D4 /* ActivityIndicatorButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorButton.swift; sourceTree = "<group>"; };
+		F77EBF1D2676845E005211D4 /* UIStackView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extensions.swift"; sourceTree = "<group>"; };
+		F77EBF1E2676845E005211D4 /* Fromatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fromatters.swift; sourceTree = "<group>"; };
+		F77EBF202676845E005211D4 /* Factory+Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Factory+Button.swift"; sourceTree = "<group>"; };
+		F77EBF212676845E005211D4 /* Factory+Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Factory+Stack.swift"; sourceTree = "<group>"; };
+		F77EBF222676845E005211D4 /* Factory+Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Factory+Label.swift"; sourceTree = "<group>"; };
+		F77EBF232676845E005211D4 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
+		F77EBF31267687A2005211D4 /* SearchReposResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchReposResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +69,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D15F711351AF04C40BCDB161 /* libPods-GithubFavs.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8F6573DCAE3ED783CC349504 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6E246E1422EE45C2A3F1054D /* libPods-GithubFavs.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AA846FCE7A1A76FC4F78765D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CE83FB250D152A12A007E15D /* Pods-GithubFavs.debug.xcconfig */,
+				86F79E15E5B5BDDC744C525E /* Pods-GithubFavs.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F745F92026769A78003B828B /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				F745F92126769A82003B828B /* GenericSectionModel.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		F77EBEEB267682B2005211D4 = {
 			isa = PBXGroup;
 			children = (
 				F77EBEF6267682B2005211D4 /* GithubFavs */,
 				F77EBEF5267682B2005211D4 /* Products */,
+				AA846FCE7A1A76FC4F78765D /* Pods */,
+				8F6573DCAE3ED783CC349504 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +122,10 @@
 		F77EBEF6267682B2005211D4 /* GithubFavs */ = {
 			isa = PBXGroup;
 			children = (
+				F77EBF112676845E005211D4 /* AppConfiguration */,
+				F77EBF142676845E005211D4 /* Networking */,
+				F77EBF182676845E005211D4 /* UIFundamentals */,
+				F77EBF0B267682CE005211D4 /* ListView */,
 				F77EBEF7267682B2005211D4 /* AppDelegate.swift */,
 				F77EBEF9267682B2005211D4 /* SceneDelegate.swift */,
 				F77EBEFB267682B2005211D4 /* ViewController.swift */,
@@ -67,6 +137,83 @@
 			path = GithubFavs;
 			sourceTree = "<group>";
 		};
+		F77EBF0B267682CE005211D4 /* ListView */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF0C267682F6005211D4 /* Cell */,
+				F77EBF0D2676831F005211D4 /* TrendingReposListViewController.swift */,
+				F77EBF0F2676832C005211D4 /* TrendingReposListViewModel.swift */,
+			);
+			path = ListView;
+			sourceTree = "<group>";
+		};
+		F77EBF0C267682F6005211D4 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				F745F92326769B11003B828B /* GithubRepoInfoCell.swift */,
+				F745F92526769F45003B828B /* RepoInfoCellModel.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		F77EBF112676845E005211D4 /* AppConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF122676845E005211D4 /* AppConfiguration.swift */,
+			);
+			path = AppConfiguration;
+			sourceTree = SOURCE_ROOT;
+		};
+		F77EBF142676845E005211D4 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF152676845E005211D4 /* URLRequest+Factory.swift */,
+				F77EBF172676845E005211D4 /* NetworkProvider.swift */,
+				F77EBF31267687A2005211D4 /* SearchReposResponse.swift */,
+			);
+			path = Networking;
+			sourceTree = SOURCE_ROOT;
+		};
+		F77EBF182676845E005211D4 /* UIFundamentals */ = {
+			isa = PBXGroup;
+			children = (
+				F745F92026769A78003B828B /* TableView */,
+				F77EBF192676845E005211D4 /* Style */,
+				F77EBF1B2676845E005211D4 /* Extensions */,
+				F77EBF1F2676845E005211D4 /* Factory */,
+			);
+			path = UIFundamentals;
+			sourceTree = SOURCE_ROOT;
+		};
+		F77EBF192676845E005211D4 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF1A2676845E005211D4 /* Style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		F77EBF1B2676845E005211D4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF1C2676845E005211D4 /* ActivityIndicatorButton.swift */,
+				F77EBF1D2676845E005211D4 /* UIStackView+Extensions.swift */,
+				F77EBF1E2676845E005211D4 /* Fromatters.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F77EBF1F2676845E005211D4 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				F77EBF202676845E005211D4 /* Factory+Button.swift */,
+				F77EBF212676845E005211D4 /* Factory+Stack.swift */,
+				F77EBF222676845E005211D4 /* Factory+Label.swift */,
+				F77EBF232676845E005211D4 /* Factory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F77EBF08267682B3005211D4 /* Build configuration list for PBXNativeTarget "GithubFavs" */;
 			buildPhases = (
+				549EADFDBF26F6795EB122EB /* [CP] Check Pods Manifest.lock */,
 				F77EBEF0267682B2005211D4 /* Sources */,
 				F77EBEF1267682B2005211D4 /* Frameworks */,
 				F77EBEF2267682B2005211D4 /* Resources */,
@@ -132,14 +280,56 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		549EADFDBF26F6795EB122EB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GithubFavs-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F77EBEF0267682B2005211D4 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F77EBF32267687A2005211D4 /* SearchReposResponse.swift in Sources */,
+				F77EBF242676845E005211D4 /* AppConfiguration.swift in Sources */,
 				F77EBEFC267682B2005211D4 /* ViewController.swift in Sources */,
+				F77EBF2C2676845E005211D4 /* Fromatters.swift in Sources */,
+				F77EBF2B2676845E005211D4 /* UIStackView+Extensions.swift in Sources */,
+				F77EBF262676845E005211D4 /* URLRequest+Factory.swift in Sources */,
+				F745F92426769B11003B828B /* GithubRepoInfoCell.swift in Sources */,
+				F77EBF102676832C005211D4 /* TrendingReposListViewModel.swift in Sources */,
+				F77EBF2E2676845E005211D4 /* Factory+Stack.swift in Sources */,
 				F77EBEF8267682B2005211D4 /* AppDelegate.swift in Sources */,
 				F77EBEFA267682B2005211D4 /* SceneDelegate.swift in Sources */,
+				F77EBF0E2676831F005211D4 /* TrendingReposListViewController.swift in Sources */,
+				F77EBF2F2676845E005211D4 /* Factory+Label.swift in Sources */,
+				F745F92626769F45003B828B /* RepoInfoCellModel.swift in Sources */,
+				F77EBF282676845E005211D4 /* NetworkProvider.swift in Sources */,
+				F77EBF302676845E005211D4 /* Factory.swift in Sources */,
+				F77EBF2D2676845E005211D4 /* Factory+Button.swift in Sources */,
+				F77EBF2A2676845E005211D4 /* ActivityIndicatorButton.swift in Sources */,
+				F77EBF292676845E005211D4 /* Style.swift in Sources */,
+				F745F92226769A82003B828B /* GenericSectionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +473,7 @@
 		};
 		F77EBF09267682B3005211D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE83FB250D152A12A007E15D /* Pods-GithubFavs.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -302,6 +493,7 @@
 		};
 		F77EBF0A267682B3005211D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 86F79E15E5B5BDDC744C525E /* Pods-GithubFavs.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

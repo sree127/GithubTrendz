@@ -8,6 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import RxFlow
 
 extension TrendingReposListViewModel {
   struct Dependencies {
@@ -15,8 +16,9 @@ extension TrendingReposListViewModel {
   }
 }
 
-final class TrendingReposListViewModel {
- 
+final class TrendingReposListViewModel: Stepper {
+  
+  let steps = PublishRelay<Step>()
   private let dependencies: Dependencies
   init(dependencies: Dependencies) {
     self.dependencies = dependencies

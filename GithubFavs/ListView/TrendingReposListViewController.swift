@@ -11,7 +11,7 @@ import RxSwift
 
 final class TrendingReposListViewController: UIViewController {
   
-  private let viewModel: TrendingReposListViewModel
+  let viewModel: TrendingReposListViewModel
   init(dependencies: TrendingReposListViewModel.Dependencies) {
     self.viewModel = TrendingReposListViewModel(dependencies: dependencies)
     

@@ -11,6 +11,7 @@
 		F745F92226769A82003B828B /* GenericSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92126769A82003B828B /* GenericSectionModel.swift */; };
 		F745F92426769B11003B828B /* GithubRepoInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92326769B11003B828B /* GithubRepoInfoCell.swift */; };
 		F745F92626769F45003B828B /* RepoInfoCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F92526769F45003B828B /* RepoInfoCellModel.swift */; };
+		F745F9292676AAFB003B828B /* AppFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F745F9282676AAFB003B828B /* AppFlow.swift */; };
 		F77EBEF8267682B2005211D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEF7267682B2005211D4 /* AppDelegate.swift */; };
 		F77EBEFA267682B2005211D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEF9267682B2005211D4 /* SceneDelegate.swift */; };
 		F77EBEFC267682B2005211D4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F77EBEFB267682B2005211D4 /* ViewController.swift */; };
@@ -40,6 +41,7 @@
 		F745F92126769A82003B828B /* GenericSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericSectionModel.swift; sourceTree = "<group>"; };
 		F745F92326769B11003B828B /* GithubRepoInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepoInfoCell.swift; sourceTree = "<group>"; };
 		F745F92526769F45003B828B /* RepoInfoCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoInfoCellModel.swift; sourceTree = "<group>"; };
+		F745F9282676AAFB003B828B /* AppFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlow.swift; sourceTree = "<group>"; };
 		F77EBEF4267682B2005211D4 /* GithubFavs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubFavs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F77EBEF7267682B2005211D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F77EBEF9267682B2005211D4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -101,6 +103,14 @@
 			path = TableView;
 			sourceTree = "<group>";
 		};
+		F745F9272676AAF3003B828B /* Flow */ = {
+			isa = PBXGroup;
+			children = (
+				F745F9282676AAFB003B828B /* AppFlow.swift */,
+			);
+			path = Flow;
+			sourceTree = "<group>";
+		};
 		F77EBEEB267682B2005211D4 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +132,7 @@
 		F77EBEF6267682B2005211D4 /* GithubFavs */ = {
 			isa = PBXGroup;
 			children = (
+				F745F9272676AAF3003B828B /* Flow */,
 				F77EBF112676845E005211D4 /* AppConfiguration */,
 				F77EBF142676845E005211D4 /* Networking */,
 				F77EBF182676845E005211D4 /* UIFundamentals */,
@@ -317,6 +328,7 @@
 				F77EBF2B2676845E005211D4 /* UIStackView+Extensions.swift in Sources */,
 				F77EBF262676845E005211D4 /* URLRequest+Factory.swift in Sources */,
 				F745F92426769B11003B828B /* GithubRepoInfoCell.swift in Sources */,
+				F745F9292676AAFB003B828B /* AppFlow.swift in Sources */,
 				F77EBF102676832C005211D4 /* TrendingReposListViewModel.swift in Sources */,
 				F77EBF2E2676845E005211D4 /* Factory+Stack.swift in Sources */,
 				F77EBEF8267682B2005211D4 /* AppDelegate.swift in Sources */,

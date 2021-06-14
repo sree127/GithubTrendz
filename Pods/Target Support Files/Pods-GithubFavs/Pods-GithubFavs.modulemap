@@ -1,6 +1,0 @@
-module Pods_GithubFavs {
-  umbrella header "Pods-GithubFavs-umbrella.h"
-
-  export *
-  module * { export * }
-}

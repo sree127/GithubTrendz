@@ -24,51 +24,51 @@ final class RepoDetailsViewModel: Stepper {
   private let dependencies: Dependencies
   init(dependencies: Dependencies) {
     self.dependencies = dependencies
+    
+    refreshRepoDetails()
   }
   
   private let disposeBag = DisposeBag()
   private lazy var repoDetailsRelay = PublishRelay<RepoDetailsResponse>()
   
-  private lazy var repoDetailsSingle: Observable<RepoDetailsResponse> = {
-    dependencies.networkProvider
-      .requestRepoDetails(ownerName: dependencies.ownerName, repoName: dependencies.repoName)
+  private lazy var repoDetailsObservable: Observable<RepoDetailsResponse> = {
+    repoDetailsRelay
       .asObservable()
-      .take(1)
       .share(replay: 1)
   }()
   
   lazy var titleDriver: Driver<String?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { $0.name }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var starsCountDriver: Driver<String?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { "⭐️: \($0.stargazersCount)" }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var followersCountDriver: Driver<String?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { "🙌: \($0.watchersCount)" }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var descriptionDriver: Driver<String?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { "📝: \($0.welcomeDescription)" }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var ownerNameDriver: Driver<String?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { $0.owner.login }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var imageURLDriver: Driver<UIImage?> = {
-    repoDetailsSingle
+    repoDetailsObservable
       .map { URL(string: $0.owner.avatarURL) }
       .flatMapLatest { [dependencies] url -> Observable<UIImage?> in
         guard let url = url else { return .empty() }
@@ -79,4 +79,28 @@ final class RepoDetailsViewModel: Stepper {
       }
       .asDriver(onErrorJustReturn: nil)
   }()
+  
+  
+  func refreshRepoDetails() {
+    Observable.just(())
+      .flatMapLatest {
+        return Observable<Int>.timer(
+          .seconds(0),
+          period: .seconds(5),
+          scheduler: SerialDispatchQueueScheduler(internalSerialQueueName: "fetch")
+        )
+      }
+      .flatMapLatest { [weak self] _ -> Observable<RepoDetailsResponse> in
+        guard let self = self else { return .empty() }
+        return self.dependencies.networkProvider
+          .requestRepoDetails(
+            ownerName: self.dependencies.ownerName,
+            repoName: self.dependencies.repoName
+          )
+          .asObservable()
+          .take(1)
+      }
+      .bind(to: repoDetailsRelay)
+      .disposed(by: disposeBag)
+  }
 }

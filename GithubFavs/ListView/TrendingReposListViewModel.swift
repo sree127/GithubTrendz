@@ -25,12 +25,30 @@ final class TrendingReposListViewModel: Stepper {
   }
   
   private(set) lazy var tableDataSourceDriver: Driver<Section> = setupDataSourceDriver()
+  private lazy var sectionItemsCached = BehaviorRelay<Section>(value: Section(items: []))
+  
+  lazy var loadNextPage = PublishSubject<Void>()
   
   func setupDataSourceDriver() -> Driver<Section> {
-    dependencies.networkProvider
-      .requestTrendingRepos()
-      .map { [dependencies] in $0.items.convertToCellModel(networkProvider: dependencies.networkProvider) }
-      .map(Section.init)
+    loadNextPage
+      .startWith(())
+      .scan(0) { (pageNumber, _) -> Int in
+        pageNumber + 1
+      }
+      .flatMapLatest { [dependencies] pageNumber in
+        return dependencies.networkProvider
+          .requestTrendingRepos(pageNumber: pageNumber)
+          .map { [dependencies] in $0.items.convertToCellModel(networkProvider: dependencies.networkProvider) }
+          .do(onSuccess: { [weak self] in
+            let cachedItems = self?.sectionItemsCached.value.items ?? []
+            self?.sectionItemsCached.accept(Section(items: cachedItems + $0))
+          })
+          .map { [weak self] currentRepoInfoModel -> Section in
+            guard let self = self else { return Section(items: []) }
+            let cachedItems = self.sectionItemsCached.value.items
+            return Section(items: cachedItems)
+          }
+      }
       .asDriver(onErrorJustReturn: Section(items: []))
   }
   

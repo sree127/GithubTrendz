@@ -71,6 +71,7 @@ private extension TrendingReposListViewController {
     tableView.register(GithubRepoInfoCell.self, forCellReuseIdentifier: "GithubRepoInfoCell")
     tableView.delegate = self
     tableView.dataSource = self
+    tableView.prefetchDataSource = self
   }
 
   
@@ -113,6 +114,16 @@ extension TrendingReposListViewController: UITableViewDelegate, UITableViewDataS
        let ownerName = cellViewModel.authorName,
        let repoName = cellViewModel.repoTitle {
       viewModel.routeToDetails(ownerName: ownerName, repoName: repoName)
+    }
+  }
+}
+
+extension TrendingReposListViewController: UITableViewDataSourcePrefetching {
+  
+  func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+    let lastIndexPath = IndexPath(row: dataSourceRelay.value.items.count - 1, section: 0)
+    if indexPaths.contains(lastIndexPath) {
+      viewModel.loadNextPage.onNext(())
     }
   }
 }

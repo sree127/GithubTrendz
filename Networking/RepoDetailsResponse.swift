@@ -39,7 +39,7 @@ struct RepoDetailsResponse: Codable {
   let gitURL, sshURL: String
   let cloneURL: String
   let svnURL: String
-  let homepage: String
+  let homepage: String?
   let size, stargazersCount, watchersCount: Int
   let language: String
   let hasIssues, hasProjects, hasDownloads, hasWiki: Bool

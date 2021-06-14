@@ -15,7 +15,7 @@ import RxCocoa
 /// New requests should be added here
 protocol NetworkInterface {
   /// Request for trending repositories
-  func requestTrendingRepos() -> Single<SearchReposResponse>
+  func requestTrendingRepos(pageNumber: Int) -> Single<SearchReposResponse>
   func requestAuthorImage(url: URL) -> Single<UIImage?>
   func requestRepoDetails(ownerName: String, repoName: String) -> Single<RepoDetailsResponse>
 }
@@ -33,13 +33,19 @@ final public class NetworkProvider: NetworkInterface {
     self.dependencies = dependencies
   }
   
-  private let urlSession = URLSession.shared
+  private lazy var urlSession: URLSession = {
+    let config = URLSessionConfiguration.ephemeral
+    config.requestCachePolicy = .reloadIgnoringLocalCacheData
+    config.urlCache = nil
+    return URLSession(configuration: config)
+  }()
   
-  func requestTrendingRepos() -> Single<SearchReposResponse> {
+  func requestTrendingRepos(pageNumber: Int) -> Single<SearchReposResponse> {
     // Get URL request
     guard let request = Factory.Request.makeFrom(
       .getTrendingRepos(
-        host: dependencies.baseURL
+        host: dependencies.baseURL,
+        pageNumber: pageNumber
       )
     ) else { return .error(NetworkProviderError.urlNotFound) }
     

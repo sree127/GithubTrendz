@@ -16,17 +16,18 @@ extension Factory {
 extension Factory.Request: FactoryMethod {
   
   enum OutputType {
-    case getTrendingRepos(host: String)
+    case getTrendingRepos(host: String, pageNumber: Int)
     case getRepoDetails(host: String, ownerName: String, repoName: String)
   }
   
   static func makeFrom(_ type: OutputType) -> URLRequest? {
     switch type {
-    case let .getTrendingRepos(host):
+    case let .getTrendingRepos(host, pageNumber):
       var component = URLComponents(string: host)
       component?.queryItems = [
         URLQueryItem(name: "q", value: "language:swift"),
-        URLQueryItem(name: "sort", value: "stars")
+        URLQueryItem(name: "sort", value: "stars"),
+        URLQueryItem(name: "page", value: "\(pageNumber)")
       ]
       guard let url = component?.url?.appending(["search", "repositories"]) else { return nil }
       var urlRequest = URLRequest(url: url)

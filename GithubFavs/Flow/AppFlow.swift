@@ -50,6 +50,7 @@ final class AppFlow: Flow {
     )
     
     navigationController.pushViewController(viewController, animated: true)
+    navigationController.navigationBar.topItem?.backBarButtonItem = UIBarButtonItem()
     return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController.viewModel))
   }
 }

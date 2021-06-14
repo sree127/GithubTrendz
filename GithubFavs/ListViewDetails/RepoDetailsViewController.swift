@@ -73,8 +73,7 @@ private extension RepoDetailsViewController {
     NSLayoutConstraint.activate([
       mainStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Layout.stackSpacing),
       mainStack.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: Layout.stackSpacing),
-      mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Layout.stackSpacing),
-//      mainStack.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+      mainStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Layout.stackSpacing)
     ])
   }
 }
@@ -105,6 +104,10 @@ private extension RepoDetailsViewController {
     
     viewModel.descriptionDriver
       .drive(descriptionLabel.rx.text)
+      .disposed(by: disposeBag)
+    
+    viewModel.titleDriver
+      .drive(navigationItem.rx.title)
       .disposed(by: disposeBag)
   }
 }

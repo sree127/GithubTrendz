@@ -42,14 +42,23 @@ final class TrendingReposListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
   
-    layoutTableView()
-    setupTableView()
+    layout()
     setupTableDataSourceBinding()
   }
 }
 
 // MARK: - Layout
 private extension TrendingReposListViewController {
+  
+  func layout() {
+    setupUI()
+    layoutTableView()
+    setupTableView()
+  }
+  
+  func setupUI() {
+    navigationItem.title = "Trending Swift Repos"
+  }
   
   func layoutTableView() {
     tableView.separatorInset = UIEdgeInsets(top: 0, left: Layout.separatorLeftInset, bottom: 0, right: 0)

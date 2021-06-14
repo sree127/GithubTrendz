@@ -52,6 +52,7 @@ private extension GithubRepoInfoCell {
   func layout() {
     backgroundColor = Style.Color.Background.back
     accessoryType = .disclosureIndicator
+    selectionStyle = .none
     
     layoutDescriptionStack()
     layoutMainStack()

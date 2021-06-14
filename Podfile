@@ -8,6 +8,6 @@ def common_pods
   pod 'Alamofire', '~> 4.7'
 end
 
-target 'GithubFavs' do
+target 'GithubTrendz' do
   common_pods
 end

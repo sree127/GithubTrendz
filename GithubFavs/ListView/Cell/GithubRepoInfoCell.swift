@@ -27,6 +27,7 @@ class GithubRepoInfoCell: UITableViewCell {
   private lazy var authorImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.layer.cornerRadius = Layout.imageViewCornerRadius
+    imageView.clipsToBounds = true
     return imageView
   }()
   
@@ -49,6 +50,9 @@ class GithubRepoInfoCell: UITableViewCell {
 private extension GithubRepoInfoCell {
   
   func layout() {
+    backgroundColor = Style.Color.Background.back
+    accessoryType = .disclosureIndicator
+    
     layoutDescriptionStack()
     layoutMainStack()
   }

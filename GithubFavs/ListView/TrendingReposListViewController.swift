@@ -53,6 +53,7 @@ private extension TrendingReposListViewController {
   
   func layoutTableView() {
     tableView.separatorInset = UIEdgeInsets(top: 0, left: Layout.separatorLeftInset, bottom: 0, right: 0)
+    tableView.backgroundColor = Style.Color.Background.back
     view.addSubview(tableView)
     NSLayoutConstraint.activate([
       tableView.topAnchor.constraint(equalTo: view.topAnchor),

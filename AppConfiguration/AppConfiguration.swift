@@ -15,7 +15,7 @@ public struct AppConfiguration {
   }
   
   fileprivate static let configuration: [Endpoint: String] = [
-    .searchRepositories: "https://api.github.com/search/"
+    .searchRepositories: "https://api.github.com/"
   ]
   
   fileprivate static func configurationValue(endpoint: Endpoint) -> AnyHashable? {

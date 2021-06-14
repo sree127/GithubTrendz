@@ -27,13 +27,13 @@ public extension Factory {
           label.text = text
           label.textAlignment = alignment
           label.numberOfLines = 0
-          label.textColor = .black
+          label.textColor = .systemGray
         case let.subtitle(text, alignment):
           label.font = .preferredFont(forTextStyle: .subheadline)
           label.text = text
           label.textAlignment = alignment
           label.numberOfLines = 0
-          label.textColor = .lightGray
+          label.textColor = .systemGray
         }
         return label
       }

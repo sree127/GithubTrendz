@@ -17,6 +17,7 @@ protocol NetworkInterface {
   /// Request for trending repositories
   func requestTrendingRepos() -> Single<SearchReposResponse>
   func requestAuthorImage(url: URL) -> Single<UIImage?>
+  func requestRepoDetails(ownerName: String, repoName: String) -> Single<RepoDetailsResponse>
 }
 
 extension NetworkProvider {
@@ -56,6 +57,22 @@ final public class NetworkProvider: NetworkInterface {
       .map(UIImage.init)
       .retry(2)
       .take(1)
+      .asSingle()
+  }
+  
+  func requestRepoDetails(ownerName: String, repoName: String) -> Single<RepoDetailsResponse> {
+    guard let request = Factory.Request.makeFrom(
+      .getRepoDetails(
+        host: dependencies.baseURL,
+        ownerName: ownerName,
+        repoName: repoName
+      )
+    ) else { return .error(NetworkProviderError.urlNotFound) }
+    
+    return urlSession.rx.data(request: request)
+      .map { try JSONDecoder().decode(RepoDetailsResponse.self, from: $0) }
+      .take(1)
+      .debug("🚀🚀🚀🚀🚀")
       .asSingle()
   }
 }

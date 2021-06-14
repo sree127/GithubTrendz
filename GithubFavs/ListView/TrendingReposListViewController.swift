@@ -109,7 +109,11 @@ extension TrendingReposListViewController: UITableViewDelegate, UITableViewDataS
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-   
+    if let cellViewModel = dataSourceRelay.value.items[indexPath.row] as? RepoInfoCellModel,
+       let ownerName = cellViewModel.authorName,
+       let repoName = cellViewModel.repoTitle {
+      viewModel.routeToDetails(ownerName: ownerName, repoName: repoName)
+    }
   }
 }
 

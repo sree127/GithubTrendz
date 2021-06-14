@@ -33,6 +33,10 @@ final class TrendingReposListViewModel: Stepper {
       .map(Section.init)
       .asDriver(onErrorJustReturn: Section(items: []))
   }
+  
+  func routeToDetails(ownerName: String, repoName: String) {
+    steps.accept(AppFlowStep.repoDetails(ownerName: ownerName, repoName: repoName))
+  }
 }
 
 extension Array where Iterator.Element == ItemsResponse {

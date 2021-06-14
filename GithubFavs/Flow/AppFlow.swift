@@ -10,6 +10,7 @@ import RxFlow
 
 enum AppFlowStep: Step {
   case initial
+  case repoDetails(ownerName: String, repoName: String)
 }
 
 final class AppFlow: Flow {
@@ -27,6 +28,8 @@ final class AppFlow: Flow {
     switch step {
     case .initial:
       return setRepoListView()
+    case let .repoDetails(ownerName, repoName):
+      return navigateToRepoDetails(ownerName: ownerName, repoName: repoName)
     }
   }
   
@@ -34,6 +37,19 @@ final class AppFlow: Flow {
     let viewController = TrendingReposListViewController(dependencies: .init(networkProvider: networkProvider))
     
     navigationController.setViewControllers([viewController], animated: false)
+    return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController.viewModel))
+  }
+  
+  func navigateToRepoDetails(ownerName: String, repoName: String) -> FlowContributors {
+    let viewController = RepoDetailsViewController(
+      dependencies: .init(
+        ownerName: ownerName,
+        repoName: repoName,
+        networkProvider: networkProvider
+      )
+    )
+    
+    navigationController.pushViewController(viewController, animated: true)
     return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController.viewModel))
   }
 }

@@ -17,6 +17,7 @@ extension Factory.Request: FactoryMethod {
   
   enum OutputType {
     case getTrendingRepos(host: String)
+    case getRepoDetails(host: String, ownerName: String, repoName: String)
   }
   
   static func makeFrom(_ type: OutputType) -> URLRequest? {
@@ -29,6 +30,15 @@ extension Factory.Request: FactoryMethod {
       ]
       guard let url = component?.url?.appending(["search", "repositories"]) else { return nil }
       var urlRequest = URLRequest(url: url)
+      urlRequest.addValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
+      urlRequest.httpMethod = "GET"
+      return urlRequest
+    case let .getRepoDetails(host, ownerName, repoName):
+      guard let url = URL(string: host)?
+              .appending(["repos"])
+              .appending(["\(ownerName)/\(repoName)"]) else { return nil }
+      var urlRequest = URLRequest(url: url)
+      urlRequest.addValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
       urlRequest.httpMethod = "GET"
       return urlRequest
     }

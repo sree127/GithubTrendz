@@ -1,6 +1,5 @@
 //
 //  UIStackView+Extensions.swift
-//  ApplePaySwag
 //
 //  Created by Sreejith Njamelil on 11.06.21.
 //

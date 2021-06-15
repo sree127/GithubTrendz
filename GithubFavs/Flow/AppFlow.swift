@@ -17,7 +17,7 @@ final class AppFlow: Flow {
   
   // MARK: - Properties
   private lazy var navigationController = UINavigationController()
-  private lazy var networkProvider = NetworkProvider(dependencies: .init(baseURL: AppConfiguration.sumUpReceiptURL))
+  private lazy var networkProvider = NetworkProvider(dependencies: .init(baseURL: AppConfiguration.githubBaseURL))
   private lazy var imageService = ImageService(dependencies: .init(networkProvider: networkProvider))
   
   // MARK: - Main Navigate

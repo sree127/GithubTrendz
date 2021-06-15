@@ -117,6 +117,6 @@ private extension RepoDetailsViewController {
   enum Layout {
     static let stackSpacing: CGFloat = 16
     static let imageViewCornerRadius: CGFloat = 8
-    static let imageViewHeight: CGFloat = 25
+    static let imageViewHeight: CGFloat = 40
   }
 }

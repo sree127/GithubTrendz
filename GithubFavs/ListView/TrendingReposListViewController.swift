@@ -36,7 +36,8 @@ final class TrendingReposListViewController: UIViewController {
   
   // MARK: - DataSource
   private let dataSourceRelay: BehaviorRelay<Section> = .init(value: Section(items: []))
-  
+
+  // MARK: - Properties
   private let disposeBag = DisposeBag()
   
   override func viewDidLoad() {
@@ -95,11 +96,7 @@ private extension TrendingReposListViewController {
 
 // MARK: - DataSource
 extension TrendingReposListViewController: UITableViewDelegate, UITableViewDataSource {
-  
-  func numberOfSections(in tableView: UITableView) -> Int {
-    1
-  }
-  
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     dataSourceRelay.value.items.count
   }
@@ -127,6 +124,7 @@ extension TrendingReposListViewController: UITableViewDelegate, UITableViewDataS
   }
 }
 
+// MARK: - Prefetching
 extension TrendingReposListViewController: UITableViewDataSourcePrefetching {
   
   func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
@@ -137,6 +135,7 @@ extension TrendingReposListViewController: UITableViewDataSourcePrefetching {
   }
 }
 
+// MARK: - Layout
 extension TrendingReposListViewController {
   enum Layout {
     static let separatorLeftInset: CGFloat = 80

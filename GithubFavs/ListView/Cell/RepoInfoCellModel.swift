@@ -12,20 +12,6 @@ struct RepoInfoCellModel: RowViewModel {
   var authorImageDriver: Driver<UIImage?>
   var repoTitle: String?
   var starsCount: Int
-  var followersCount: Int
+  var forksCount: Int
   var authorName: String?
-}
-
-extension RepoInfoCellViewModel {
-  struct Dependencies {
-    let searchRepoResponse: SearchReposResponse
-  }
-}
-
-final class RepoInfoCellViewModel {
-  
-  private let dependencies: Dependencies
-  init(dependencies: Dependencies) {
-    self.dependencies = dependencies
-  }
 }

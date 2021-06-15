@@ -8,19 +8,19 @@
 import Foundation
 import RxFlow
 
-enum AppFlowStep: Step {
-  case initial
-  case repoDetails(ownerName: String, repoName: String)
-}
+/// Class which handles all the navigation logic within the app
+/// Steppers, such as *ViewModel emits a step which is then processed here
 
 final class AppFlow: Flow {
   
   var root: Presentable { navigationController }
   
+  // MARK: - Properties
   private lazy var navigationController = UINavigationController()
-  
   private lazy var networkProvider = NetworkProvider(dependencies: .init(baseURL: AppConfiguration.sumUpReceiptURL))
+  private lazy var imageService = ImageService(dependencies: .init(networkProvider: networkProvider))
   
+  // MARK: - Main Navigate
   func navigate(to step: Step) -> FlowContributors {
     guard let step = step as? AppFlowStep else {
       return .none
@@ -33,8 +33,14 @@ final class AppFlow: Flow {
     }
   }
   
+  // MARK: - Navigation
   func setRepoListView() -> FlowContributors {
-    let viewController = TrendingReposListViewController(dependencies: .init(networkProvider: networkProvider))
+    let viewController = TrendingReposListViewController(
+      dependencies: .init(
+        networkProvider: networkProvider,
+        imageService: imageService
+      )
+    )
     
     navigationController.setViewControllers([viewController], animated: false)
     return .one(flowContributor: .contribute(withNextPresentable: viewController, withNextStepper: viewController.viewModel))

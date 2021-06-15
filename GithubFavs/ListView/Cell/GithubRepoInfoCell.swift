@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class GithubRepoInfoCell: UITableViewCell {
+final class GithubRepoInfoCell: UITableViewCell {
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -23,14 +23,12 @@ class GithubRepoInfoCell: UITableViewCell {
   
   // MARK: - UI Components
   private lazy var mainStack = Factory.Stack.makeFrom(.horizontal(alignment: .center, distribution: .fill, spacing: Layout.stackSpacing))
-  
   private lazy var authorImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.layer.cornerRadius = Layout.imageViewCornerRadius
     imageView.clipsToBounds = true
     return imageView
   }()
-  
   private lazy var descriptionStack = Factory.Stack.makeFrom(.vertical(alignment: .fill, distribution: .fill, spacing: Layout.stackSpacing))
   private lazy var repoTitleLabel = Factory.Label.Generic.makeFrom(.title(text: nil))
   private lazy var starsLabel = Factory.Label.Generic.makeFrom(.subtitle(text: nil))
@@ -64,7 +62,7 @@ private extension GithubRepoInfoCell {
   
   func layoutMainStack() {
     mainStack.addArrangedSubview(authorImageView, constraints: [
-      authorImageView.widthAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.3),
+      authorImageView.widthAnchor.constraint(equalTo: mainStack.widthAnchor, multiplier: 0.2),
       authorImageView.heightAnchor.constraint(equalTo: authorImageView.widthAnchor)
     ])
     mainStack.addArrangedSubview(descriptionStack)
@@ -84,8 +82,8 @@ extension GithubRepoInfoCell {
   
   func configure(cellViewModel: RepoInfoCellModel) {
     repoTitleLabel.text = cellViewModel.repoTitle
-    starsLabel.text = "⭐️ \(cellViewModel.starsCount)"
-    followersLabel.text = "🙌 \(cellViewModel.followersCount)"
+    starsLabel.text = "⭐️ Stars: \(cellViewModel.starsCount)"
+    followersLabel.text = "🍴Forks: \(cellViewModel.forksCount)"
     authorNameLabel.text = "Author: \(cellViewModel.authorName ?? "-")"
     cellViewModel.authorImageDriver
       .drive(authorImageView.rx.image)

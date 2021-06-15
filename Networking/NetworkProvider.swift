@@ -3,7 +3,6 @@
 //  ApplePaySwag
 //
 //  Created by Sreejith Njamelil on 11.06.21.
-//  Copyright © 2021 Razeware LLC. All rights reserved.
 //
 
 import Foundation
@@ -14,9 +13,19 @@ import RxCocoa
 /// Contains information about all the various network requests
 /// New requests should be added here
 protocol NetworkInterface {
-  /// Request for trending repositories
+  /// Request  for trending repos
+  /// - Parameter pageNumber: pageNumber for pagination. Starts with 1
   func requestTrendingRepos(pageNumber: Int) -> Single<SearchReposResponse>
+  
+  /// Request for author image of a repo
+  /// - Parameter url: url of the avatar
   func requestAuthorImage(url: URL) -> Single<UIImage?>
+  
+  
+  /// Request for repo details of a specific repo
+  /// - Parameters:
+  ///   - ownerName: owner name of the repo
+  ///   - repoName: the actual name of the repo
   func requestRepoDetails(ownerName: String, repoName: String) -> Single<RepoDetailsResponse>
 }
 
@@ -33,6 +42,7 @@ final public class NetworkProvider: NetworkInterface {
     self.dependencies = dependencies
   }
   
+  // MARK: - Properties
   private lazy var urlSession: URLSession = {
     let config = URLSessionConfiguration.ephemeral
     config.requestCachePolicy = .reloadIgnoringLocalCacheData
@@ -40,6 +50,7 @@ final public class NetworkProvider: NetworkInterface {
     return URLSession(configuration: config)
   }()
   
+  // MARK: - Requests
   func requestTrendingRepos(pageNumber: Int) -> Single<SearchReposResponse> {
     // Get URL request
     guard let request = Factory.Request.makeFrom(

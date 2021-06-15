@@ -9,7 +9,6 @@ import RxFlow
 import RxCocoa
 
 final class AppStepper: Stepper {
-  
   let steps = PublishRelay<Step>()
   let initialStep: Step = AppFlowStep.initial
 }

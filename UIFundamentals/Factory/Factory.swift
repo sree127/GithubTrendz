@@ -3,7 +3,6 @@
 //  ApplePaySwag
 //
 //  Created by Sreejith Njamelil on 11.06.21.
-//  Copyright © 2021 Razeware LLC. All rights reserved.
 //
 
 import Foundation

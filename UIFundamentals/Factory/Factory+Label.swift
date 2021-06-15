@@ -3,7 +3,6 @@
 //  ApplePaySwag
 //
 //  Created by Sreejith Njamelil on 11.06.21.
-//  Copyright © 2021 Razeware LLC. All rights reserved.
 //
 
 import UIKit
@@ -23,7 +22,7 @@ public extension Factory {
         let label = UILabel()
         switch type {
         case let .title(text, alignment):
-          label.font = .preferredFont(forTextStyle: .callout)
+          label.font = .preferredFont(forTextStyle: .title2)
           label.text = text
           label.textAlignment = alignment
           label.numberOfLines = 0

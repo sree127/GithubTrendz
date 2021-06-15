@@ -28,15 +28,16 @@ final class RepoDetailsViewModel: Stepper {
     refreshRepoDetails()
   }
   
+  // MARK: - Private properties
   private let disposeBag = DisposeBag()
   private lazy var repoDetailsRelay = PublishRelay<RepoDetailsResponse>()
-  
   private lazy var repoDetailsObservable: Observable<RepoDetailsResponse> = {
     repoDetailsRelay
       .asObservable()
       .share(replay: 1)
   }()
   
+  // MARK: - Public properties
   lazy var titleDriver: Driver<String?> = {
     repoDetailsObservable
       .map { $0.name }
@@ -45,13 +46,13 @@ final class RepoDetailsViewModel: Stepper {
   
   lazy var starsCountDriver: Driver<String?> = {
     repoDetailsObservable
-      .map { "⭐️: \($0.stargazersCount)" }
+      .map { "⭐️ Stars: \($0.stargazersCount)" }
       .asDriver(onErrorJustReturn: "-")
   }()
   
   lazy var followersCountDriver: Driver<String?> = {
     repoDetailsObservable
-      .map { "🙌: \($0.watchersCount)" }
+      .map { "🍴 Forks: \($0.forksCount)" }
       .asDriver(onErrorJustReturn: "-")
   }()
   
@@ -80,14 +81,15 @@ final class RepoDetailsViewModel: Stepper {
       .asDriver(onErrorJustReturn: nil)
   }()
   
-  
+  // MARK: - Fetch Repo Details 
+  // Function which handles the refreshing of repo details every 10 seconds
   func refreshRepoDetails() {
     Observable.just(())
       .flatMapLatest {
         return Observable<Int>.timer(
           .seconds(0),
-          period: .seconds(5),
-          scheduler: SerialDispatchQueueScheduler(internalSerialQueueName: "fetch")
+          period: .seconds(Constant.refreshTimeInterval),
+          scheduler: SerialDispatchQueueScheduler(internalSerialQueueName: "de.githubtrendz.refreshRepo")
         )
       }
       .flatMapLatest { [weak self] _ -> Observable<RepoDetailsResponse> in
@@ -100,7 +102,15 @@ final class RepoDetailsViewModel: Stepper {
           .asObservable()
           .take(1)
       }
-      .bind(to: repoDetailsRelay)
+      .subscribe(onNext: repoDetailsRelay.accept)
       .disposed(by: disposeBag)
+  }
+}
+
+// MARK: - Constant
+private extension RepoDetailsViewModel {
+  enum Constant {
+    // Refresh every 10 seconds and request for new data
+    static let refreshTimeInterval = 10
   }
 }

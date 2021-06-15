@@ -13,6 +13,7 @@ import RxFlow
 extension TrendingReposListViewModel {
   struct Dependencies {
     let networkProvider: NetworkProvider
+    let imageService: ImageService
   }
 }
 
@@ -24,6 +25,7 @@ final class TrendingReposListViewModel: Stepper {
     self.dependencies = dependencies
   }
   
+  // MARK: - Properties
   private(set) lazy var tableDataSourceDriver: Driver<Section> = setupDataSourceDriver()
   private lazy var sectionItemsCached = BehaviorRelay<Section>(value: Section(items: []))
   
@@ -38,7 +40,7 @@ final class TrendingReposListViewModel: Stepper {
       .flatMapLatest { [dependencies] pageNumber in
         return dependencies.networkProvider
           .requestTrendingRepos(pageNumber: pageNumber)
-          .map { [dependencies] in $0.items.convertToCellModel(networkProvider: dependencies.networkProvider) }
+          .map { [dependencies] in $0.items.convertToCellModel(imageService: dependencies.imageService) }
           .do(onSuccess: { [weak self] in
             let cachedItems = self?.sectionItemsCached.value.items ?? []
             self?.sectionItemsCached.accept(Section(items: cachedItems + $0))
@@ -57,29 +59,29 @@ final class TrendingReposListViewModel: Stepper {
   }
 }
 
+// MARK: - Helper Extension
 extension Array where Iterator.Element == ItemsResponse {
   
-  func convertToCellModel(networkProvider: NetworkProvider) -> [RepoInfoCellModel] {
-    return self.map { itemResponse -> RepoInfoCellModel in
+  func convertToCellModel(imageService: ImageService) -> [RepoInfoCellModel] {
+    map { itemResponse -> RepoInfoCellModel in
       guard let authorURL = URL(string: itemResponse.owner.avatarURL) else {
         return RepoInfoCellModel(
           authorImageDriver: .just(nil),
           repoTitle: itemResponse.name,
           starsCount: itemResponse.stargazersCount,
-          followersCount: itemResponse.watchersCount,
+          forksCount: itemResponse.forksCount,
           authorName: itemResponse.owner.login
         )
       }
-      let imageDriver = networkProvider
-        .requestAuthorImage(url: authorURL)
-        .asObservable()
+      let imageDriver = imageService
+        .imageFromURL(authorURL)
         .take(1)
         .asDriver(onErrorJustReturn: nil)
       return RepoInfoCellModel(
         authorImageDriver: imageDriver,
         repoTitle: itemResponse.name,
         starsCount: itemResponse.stargazersCount,
-        followersCount: itemResponse.watchersCount,
+        forksCount: itemResponse.forksCount,
         authorName: itemResponse.owner.login
       )
     }

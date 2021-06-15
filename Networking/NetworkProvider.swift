@@ -7,7 +7,6 @@
 
 import Foundation
 import RxSwift
-import Alamofire
 import RxCocoa
 
 /// Contains information about all the various network requests
